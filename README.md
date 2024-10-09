@@ -8,3 +8,7 @@ MySQL: É um sistema de gerenciamento de banco de dados relacional. Ele armazena
 
 Portas 84, 443 Apache/// 3306 MySQL
 
+
+![image](https://github.com/user-attachments/assets/2997d238-bbd3-4326-bf44-639c72a7361a)
+
+
