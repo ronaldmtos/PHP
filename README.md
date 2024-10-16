@@ -7,6 +7,9 @@ PHP: É uma linguagem de programação de script que roda no servidor. PHP é am
 MySQL: É um sistema de gerenciamento de banco de dados relacional. Ele armazena e gerencia os dados de aplicativos web. Por exemplo, em um site de e-commerce, MySQL armazenaria informações como usuários, produtos, pedidos, etc. O PHP geralmente se conecta ao MySQL para buscar, inserir ou atualizar informações no banco de dados.
 
 Portas 84, 443 Apache/// 3306 MySQL
+O servidor de banco de dados MySQL usa, por padrão, a porta 3306 para conexões TCP/IP.
+
+
 
 
 ![image](https://github.com/user-attachments/assets/2997d238-bbd3-4326-bf44-639c72a7361a)
