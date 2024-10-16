@@ -11,7 +11,7 @@ O servidor de banco de dados MySQL usa, por padrão, a porta 3306 para conexões
 
 
 
-
+SALVAR O index.php no:
 ![image](https://github.com/user-attachments/assets/2997d238-bbd3-4326-bf44-639c72a7361a)
 
 
