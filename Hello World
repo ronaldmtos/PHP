@@ -2,7 +2,23 @@
 
 echo "Meu primeiro código PHP! Hello World"; #print
 
-$nome = "Ronald"; 
 
+
+
+
+$nome = "Ronald"; // VARIÁVEL CHAMADA $NOME E VALOR "RONALD"
+$site = "www.hcode.com.br"; // VARIÁVEL CHAMADA $SITE E VALOR "www.hcode.com.br"
+
+$ano = 1990; // VARIÁVEL CHAMADA $ANO E VALOR 1990
+$salario = 5500.00; // VARIÁVEL CHAMADA $SALARIO E VALOR 5500.00
+/////////////////////////////////////////////
+
+$linguagens = array("php", "python", "java", "c"); // ARRAY CHAMADO $LINGUAGENS COM 4 STRINGS
+// echo $linguagens[1]; // EXIBE O SEGUNDO ELEMENTO DO ARRAY $LINGUAGENS (ÍNDICE 1)
+
+
+$nascimento = new DateTime(); // CRIA UM NOVO OBJETO DateTime, QUE REPRESENTA A DATA E HORA ATUAIS
+// var_dump($nascimento); //  EXIBE INFORMAÇÕES DETALHADAS SOBRE O OBJETO $NASCIMENTO
 
 ?>
+
