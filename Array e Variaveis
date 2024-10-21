@@ -20,5 +20,23 @@ $linguagens = array("php", "python", "java", "c"); // ARRAY CHAMADO $LINGUAGENS 
 $nascimento = new DateTime(); // CRIA UM NOVO OBJETO DateTime, QUE REPRESENTA A DATA E HORA ATUAIS
 // var_dump($nascimento); //  EXIBE INFORMAÇÕES DETALHADAS SOBRE O OBJETO $NASCIMENTO
 
-?>
+
+
+
+
+$ip = $_SERVER("REMOTE_ADDR");  //obtém o endereço IP do cliente que está acessando o site
+echo $ip
+
+
+$ip = $_SERVER("SCRIPT_NAME");    //retorna o caminho do script sendo executado, ou seja, o caminho relativo ao diretório raiz do site. 
+echo $ip                          //Por exemplo, se o arquivo estiver em localhost/exemplo/index.php, o valor será algo como /exemplo/index.php.
+
+
+
+
+
+
+
+
+
 
