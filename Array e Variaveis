@@ -2,7 +2,7 @@
 
 echo "Meu primeiro código PHP! Hello World"; //print
 
-
+echo "<br>"; //QUEBRA DE LINHA
 
 
 
@@ -33,13 +33,13 @@ echo $ip                          //Por exemplo, se o arquivo estiver em localho
 
 
 
-// Definindo a função
+// DEFININDO A FUNÇÃO CHAMADA 'SOMAR' QUE RECEBE DOIS PARÂMETROS
 function somar($a, $b) {
-    return $a + $b; // Retorna a soma de $a e $b
+    return $a + $b; // RETORNA A SOMA DE $A E $B
 }
 
-// Chamando a função e exibindo o resultado
-echo somar(5, 3); // Exibe 8
+// CHAMANDO A FUNÇÃO 'SOMAR' COM OS VALORES 5 E 3 E EXIBINDO O RESULTADO
+echo somar(5, 3); // EXIBE 8
 
 
 
@@ -47,9 +47,25 @@ echo $nome."alguma coisa";  // Concatenando a variável $nome com a string " alg
 
 
 
-$valorTotal=0;
-$valorTotal+=100;
-echo $valorTotal;
+$valorTotal = 0; // VARIÁVEL CHAMADA $VALORTOTAL E VALOR INICIAL 0
+$valorTotal += 100; // ADICIONA 100 AO VALOR ATUAL DE $VALORTOTAL
+echo $valorTotal; // EXIBE O VALOR DE $VALORTOTAL
+
+
+echo strtoupper($nome); //STRTOUPPER TRANSFORMAR EM MAISCULO
+
+
+$empresa = "Hcode"; // VARIÁVEL CHAMADA $EMPRESA E VALOR "HCODE"
+$empresa = str_replace("o", "0", $empresa); // SUBSTITUI O CARACTERE "O" POR "0" NA VARIÁVEL $EMPRESA
+$empresa = str_replace("e", "3", $empresa); // SUBSTITUI O CARACTERE "E" POR "3" NA VARIÁVEL $EMPRESA
+echo $empresa; // EXIBE "H3C0D3"  // EXIBE O VALOR FINAL DA VARIÁVEL $EMPRESA
+
+
+$frase = "A repetição é mãe da retenção."; // VARIÁVEL CHAMADA $FRASE COM O VALOR "A REPETIÇÃO É MÃE DA RETENÇÃO."
+// PROCURA A POSIÇÃO DA SUBSTRING "MÃE" NA VARIÁVEL $FRASE
+$q = strpos($frase, "mãe"); // A FUNÇÃO strpos RETORNA A POSIÇÃO DA PRIMEIRA OCORRÊNCIA OU FALSE SE NÃO ENCONTRAR
+var_dump($q); // EXIBE O VALOR DA POSIÇÃO ENCONTRADA OU FALSE
+
 
 
 
