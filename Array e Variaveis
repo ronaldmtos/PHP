@@ -33,10 +33,23 @@ echo $ip                          //Por exemplo, se o arquivo estiver em localho
 
 
 
+// Definindo a função
+function somar($a, $b) {
+    return $a + $b; // Retorna a soma de $a e $b
+}
+
+// Chamando a função e exibindo o resultado
+echo somar(5, 3); // Exibe 8
 
 
 
+echo $nome."alguma coisa";  // Concatenando a variável $nome com a string " alguma coisa"
 
+
+
+$valorTotal=0;
+$valorTotal+=100;
+echo $valorTotal;
 
 
 
