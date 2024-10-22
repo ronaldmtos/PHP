@@ -67,9 +67,4 @@ $q = strpos($frase, "mãe"); // A FUNÇÃO strpos RETORNA A POSIÇÃO DA PRIMEIR
 var_dump($q); // EXIBE O VALOR DA POSIÇÃO ENCONTRADA OU FALSE
 
 
-function soma($a, $b) {
-    return $a + $b;
-}
-// Exemplo de uso
-echo soma(3, 5); // Saída: 8
 
