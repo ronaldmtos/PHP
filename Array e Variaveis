@@ -24,6 +24,33 @@ $nascimento = new DateTime(); // CRIA UM NOVO OBJETO DateTime, QUE REPRESENTA A 
 
 
 
+
+
+
+
+$carros[0][0] = "GM";         //matriz bidimensional (array de arrays) chamada $carros
+$carros[0][1] = "Cobalt";
+$carros[0][2] = "Onix";
+$carros[0][3] = "Camaro";
+
+$carros[1][0] = "Ford";
+$carros[1][1] = "Fiesta";
+$carros[1][2] = "Fusion";
+
+echo $carros[0][3];
+
+echo end($carros[1]); // A função end() move o ponteiro para o último elemento e o retorna
+
+
+
+
+
+
+
+
+
+
+
 $ip = $_SERVER("REMOTE_ADDR");  //obtém o endereço IP do cliente que está acessando o site
 echo $ip
 
