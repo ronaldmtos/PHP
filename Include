@@ -1,0 +1,3 @@
+include "index.php";  //INCLUE ALGUMA FUNÇÃO QUE ESTÁ NO INDEX (OUTRO ARQUIVO)
+
+require "index.php;  //OBRIGA QUE O ARQUIVO EXISTA PARA RODAR O SCRIPT
