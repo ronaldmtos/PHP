@@ -1,3 +1,12 @@
+function soma($a, $b) {
+    return $a + $b;
+}
+echo soma(3, 5); // Saída: 8
+
+
+
+
 include "index.php";  //INCLUE ALGUMA FUNÇÃO QUE ESTÁ NO INDEX (OUTRO ARQUIVO)
 
 require "index.php;  //OBRIGA QUE O ARQUIVO EXISTA PARA RODAR O SCRIPT
+
