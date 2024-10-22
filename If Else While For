@@ -29,9 +29,18 @@ for ($i = 0; $i < 10; i++) {
   echo $i . "<br>";
 }
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+$condicao = true;
 
-
+while ($condicao) {
+    $numero = rand(1, 10); // Gera um número aleatório entre 1 e 10
+    if ($numero === 3) {    // Verifica se o número gerado é igual a 3
+        echo "TRÊS!";       // Se for 3, exibe "TRÊS!"
+        $condicao = false;  // Define a condição como falsa para sair do loop
+    }
+    echo $numero . " ";     // Exibe o número gerado
+}
 
 
 
