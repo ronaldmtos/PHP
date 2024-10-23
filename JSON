@@ -1,0 +1,21 @@
+<?php
+
+// CRIA UM ARRAY VAZIO CHAMADO $PESSOAS
+$pessoas = array();
+
+// UTILIZA A FUNÇÃO array_push PARA ADICIONAR UM NOVO ARRAY ASSOCIATIVO COM 'NOME' E 'IDADE' AO ARRAY $PESSOAS
+array_push($pessoas, array(
+    "nome" => "João",  // INSERE "JOÃO" COMO O NOME
+    "idade" => 20      // INSERE 20 COMO A IDADE
+));
+
+// ADICIONA OUTRO ARRAY ASSOCIATIVO AO ARRAY $PESSOAS, COM DIFERENTES VALORES
+array_push($pessoas, array(
+    "nome" => "Glaucio",  // INSERE "GLAUCIO" COMO O NOME
+    "idade" => 25         // INSERE 25 COMO A IDADE
+));
+
+// CONVERTE O ARRAY $PESSOAS PARA UM FORMATO JSON E EXIBE NO NAVEGADOR
+echo json_encode($pessoas);
+
+?>
