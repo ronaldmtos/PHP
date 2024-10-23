@@ -1,0 +1,2 @@
+define("SERVIDOR", "127.0.0.1");                    //Constantes são acessadas sem o $
+echo SERVIDOR;  // Saída: 127.0.0.1
