@@ -1,0 +1,27 @@
+<?php
+
+// A FUNÇÃO 'ola' ACEITA DOIS PARÂMETROS: 'texto' E 'periodo', AMBOS COM VALORES PADRÃO
+function ola($texto = "Mundo", $periodo = "Bom dia") {
+    return "Olá $texto! $periodo! <br/>";
+}
+
+// EXIBE "Olá Mundo! Bom dia!"
+echo ola("Mundo", "Bom dia");
+
+// EXIBE "Olá ! Boa noite!" - O TEXTO ESTÁ VAZIO, MAS O PERÍODO É "Boa noite"
+echo ola("", "Boa noite");
+
+// EXIBE "Olá Glaucio! Boa tarde!" - O TEXTO É "Glaucio" E O PERÍODO É "Boa tarde"
+echo ola("Glaucio", "Boa tarde");
+
+// EXIBE "Olá João! !" - O TEXTO É "João", MAS O PERÍODO ESTÁ VAZIO
+echo ola("João", "");
+
+?>
+
+
+
+
+
+
+
