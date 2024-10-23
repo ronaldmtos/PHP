@@ -2,4 +2,49 @@
 
 session_start();
 
-echo $_SESSION["nome"
+echo $_SESSION["nome"]/;    // EXIBIR O NOME DA SESSÃO
+
+
+
+
+
+
+
+
+<?php 
+
+// GERALMENTE CRIAR UM ARQUIVO DE CONFIGURAÇÕES E USAR REQUIRE PARA CHAMAR
+require_once("config.php");
+
+// REMOVER A VARIÁVEL DE SESSÃO "nome"
+session_unset(); // Isso remove todas as variáveis de sessão
+
+echo $_SESSION["nome"]; // TENTAR EXIBIR O NOME DA SESSÃO (PODERIA ESTAR VAZIO)
+
+session_destroy(); // DESTRUIR A SESSÃO
+
+
+
+session_regenerate_id(); //GERA UM NOVO
+
+
+
+
+
+
+
+
+
+switch(session_status()) {
+    case PHP_SESSION_DISABLED:
+        echo "AS SESSÕES ESTIVEREM DESABILITADAS.";
+        break;
+
+    case PHP_SESSION_NONE:
+        echo "AS SESSÕES ESTIVEREM HABILITADAS, MAS NENHUMA EXISTIR.";
+        break;
+
+    case PHP_SESSION_ACTIVE:
+        echo "AS SESSÕES ESTIVEREM HABILITADAS, E UMA EXISTIR.";
+        break;
+}
