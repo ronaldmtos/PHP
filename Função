@@ -25,3 +25,129 @@ echo ola("João", "");
 
 
 
+function ola()
+    $argumentos = func_get_args();     // RECUPERA TODOS OS ARGUMENTOS PASSADOS PARA A FUNÇÃO
+
+
+
+
+
+
+
+<?php
+
+$a = 10;
+
+function trocaValor(&$b) {
+    // AUMENTA O VALOR DA VARIÁVEL PASSADA POR REFERÊNCIA EM 50
+    $b += 50;
+
+    // RETORNA O NOVO VALOR DA VARIÁVEL
+    return $b;
+}
+
+echo trocaValor($a); // IMPRIME O VALOR ATUALIZADO DA VARIÁVEL $a APÓS A PRIMEIRA CHAMADA DA FUNÇÃO
+echo "<br/>";
+echo trocaValor($a); // IMPRIME O VALOR ATUALIZADO DA VARIÁVEL $a APÓS A SEGUNDA CHAMADA DA FUNÇÃO
+echo "<br/>";
+echo $a; // IMPRIME O VALOR ATUAL DA VARIÁVEL $a
+?>
+
+
+
+
+
+
+
+
+<?php
+
+$hierarquia = array(
+	array(
+		'nome_cargo'=>'CEO',
+		'subordinados'=>array(
+			// Início Diretor Comercial
+			array(
+				'nome_cargo'=>'Diretor Comercial',
+				'subordinados'=>array(
+					// Início Gerente de Vendas
+					array(
+						'nome_cargo'=>'Gerente de Vendas'
+					)
+					// Término Gerente de Vendas
+				)
+			),
+			// Término Diretor Comercial
+			// Início Diretor Financeiro
+			array(
+				'nome_cargo'=>'Diretor Financeiro',
+				'subordinados'=>array(
+					// Início Gerente de Contas a Pagar
+					array(
+						'nome_cargo'=>'Gerente de Contas a Pagar',
+						'subordinados'=>array(
+							// Início Supervisor de Pagamentos
+							array(
+								'nome_cargo'=>'Supervisor de Pagamentos'
+							)
+							// Término Supervisor de Pagamentos
+						)
+					),
+					// Término Gerente de Contas a Pagar
+					// Início Gerente de Compras
+					array(
+						'nome_cargo'=>'Gerente de Compras',
+						'subordinados'=>array(
+							// Início Supervisor de Suprimentos
+							array(
+								'nome_cargo'=>'Supervisor de Suprimentos',
+								'subordinados'=>array(
+									array(
+										'nome_cargo'=>'Funcionário'
+									)
+								)
+							)
+							// Término Supervisor de Suprimentos
+						)
+					)
+					// Término Gerente de Compras
+				)
+			)
+			// Término Diretor Financeiro
+		)
+	)
+);
+
+function exibe($cargos){
+
+	$html = '<ul>';
+
+	foreach ($cargos as $cargo) {
+		
+		$html .= '<li>';
+
+		$html .= $cargo['nome_cargo'];
+
+		if(isset($cargo['subordinados']) && count($cargo['subordinados'] > 0)){
+
+			$html .= exibe($cargo['subordinados']);
+
+		}
+
+		$html .= '</li>';
+
+	}
+
+	$html.= '</ul>';
+
+	return $html;
+
+}
+
+echo exibe($hierarquia);
+
+?>
+
+
+
+
