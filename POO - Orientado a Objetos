@@ -1,0 +1,19 @@
+<?php
+
+class Pessoa {
+
+    public $nome; // ATRIBUTO
+
+    public function falar() { // MÉTODO
+
+        return "O meu nome é " . $this->nome;
+
+    }
+
+}
+
+$glaucio = new Pessoa(); // INSTANCIA UM NOVO OBJETO DA CLASSE PESSOA
+$glaucio->nome = "Glaucio Daniel"; // DEFINE O VALOR DO ATRIBUTO NOME PARA O OBJETO GLAUCIO
+echo $glaucio->falar(); // CHAMA O MÉTODO FALAR E EXIBE O RESULTADO
+
+?>
