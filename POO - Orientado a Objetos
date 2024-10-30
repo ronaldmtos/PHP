@@ -20,3 +20,44 @@ echo $glaucio->falar(); // CHAMA O MÉTODO FALAR E EXIBE O RESULTADO
 
 
 
+
+
+
+
+
+
+<?php
+
+class Carro { // CLASSE CARRO
+
+    private $modelo; // PROPRIEDADE PRIVADA PARA O MODELO DO CARRO
+    private $motor; // PROPRIEDADE PRIVADA PARA O MOTOR DO CARRO
+    private $ano; // PROPRIEDADE PRIVADA PARA O ANO DO CARRO
+
+    public function getModelo(){ // MÉTODO PARA OBTER O MODELO
+        return $this->modelo; // RETORNA O MODELO
+    }
+
+    public function setModelo($modelo){ // MÉTODO PARA DEFINIR O MODELO
+        $this->modelo = $modelo; // DEFINE O MODELO
+    }
+
+    public function getMotor(): float { // MÉTODO PARA OBTER O MOTOR (RETORNA UM FLOAT)
+        return $this->motor; // RETORNA O MOTOR
+    }
+
+    public function setMotor($motor){ // MÉTODO PARA DEFINIR O MOTOR
+        $this->motor = $motor; // DEFINE O MOTOR
+    }
+
+    public function getAno(): int { // MÉTODO PARA OBTER O ANO (RETORNA UM INTEIRO)
+        return $this->ano; // RETORNA O ANO
+    }
+
+    public function setAno($ano){ // MÉTODO PARA DEFINIR O ANO
+        $this->ano = $ano; // DEFINE O ANO
+    }
+
+    public function exibir(){ // MÉTODO PARA EXIBIR AS INFORMAÇÕES DO CARRO
+        return array( // RETORNA UM ARRAY COM AS INFORMAÇÕES
+            "modelo" => $this->getModelo(), // ADICIONA O MODELO
