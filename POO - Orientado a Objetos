@@ -17,3 +17,6 @@ $glaucio->nome = "Glaucio Daniel"; // DEFINE O VALOR DO ATRIBUTO NOME PARA O OBJ
 echo $glaucio->falar(); // CHAMA O MÉTODO FALAR E EXIBE O RESULTADO
 
 ?>
+
+
+
