@@ -1,1 +1,29 @@
+<?php
 
+class Endereco { // INÍCIO DA CLASSE Endereco
+
+	private $logradouro; // PROPRIEDADE PRIVADA PARA O LOGRADOURO
+	private $numero; // PROPRIEDADE PRIVADA PARA O NÚMERO
+	private $cidade; // PROPRIEDADE PRIVADA PARA A CIDADE
+
+	public function __construct($a, $b, $c){ // CONSTRUTOR DA CLASSE
+		$this->logradouro = $a; // INICIALIZA O LOGRADOURO
+		$this->numero = $b; // INICIALIZA O NÚMERO
+		$this->cidade = $c; // INICIALIZA A CIDADE
+	}
+
+	public function __destruct(){ // DESTRUTOR DA CLASSE
+		// var_dump("DESTRUIR"); // PODE DESCOMENTAR PARA EXIBIR MENSAGEM QUANDO O OBJETO É DESTRUÍDO
+	}
+
+	public function __toString(){ // MÉTODO MAGICO QUE RETORNA A REPRESENTAÇÃO COMO STRING DO OBJETO
+		return $this->logradouro.", ".$this->numero." - ".$this->cidade; // RETORNA O ENDEREÇO FORMATADO
+	}
+
+}
+
+$meuEndereco = new Endereco("Rua Ademar Saraiva Leão", "123", "Santos"); // CRIA UM NOVO OBJETO Endereco
+
+echo $meuEndereco; // EXIBE O ENDEREÇO UTILIZANDO O MÉTODO __toString
+
+?>
