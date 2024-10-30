@@ -1,0 +1,40 @@
+<?php
+
+class Pessoa { // INÍCIO DA CLASSE PESSOA
+
+	public $nome = "Rasmus Lerdorf"; // PROPRIEDADE PÚBLICA 'NOME'
+	protected $idade = 48; // PROPRIEDADE PROTEGIDA 'IDADE'
+	private $senha = "123456"; // PROPRIEDADE PRIVADA 'SENHA'
+
+	public function verDados(){ // MÉTODO PARA EXIBIR DADOS
+
+		echo $this->nome . "<br/>"; // EXIBE O NOME
+		echo $this->idade . "<br/>"; // EXIBE A IDADE
+		echo $this->senha . "<br/>"; // EXIBE A SENHA (APENAS ACESSÍVEL DENTRO DA CLASSE)
+
+	}
+
+} // FIM DA CLASSE PESSOA
+
+class Programador extends Pessoa { // CLASSE PROGRAMADOR QUE HERDA DE PESSOA
+
+	public function verDados(){ // MÉTODO PARA EXIBIR DADOS
+
+		echo get_class($this) . "<br/>"; // EXIBE O NOME DA CLASSE ATUAL
+
+		echo $this->nome . "<br/>"; // EXIBE O NOME (ACESSÍVEL POR SER PÚBLICO)
+		echo $this->idade . "<br/>"; // EXIBE A IDADE (ACESSÍVEL POR SER PROTEGIDA E HERDADA)
+		echo $this->senha . "<br/>"; // TENTATIVA DE EXIBIR A SENHA (NÃO ACESSÍVEL AQUI, CAUSARÁ ERRO)
+
+	}
+
+} // FIM DA CLASSE PROGRAMADOR
+
+$objeto = new Programador(); // CRIA UM NOVO OBJETO DA CLASSE PROGRAMADOR
+
+// echo $objeto->senha . "<br/>"; // TENTATIVA DE ACESSAR A SENHA DIRETAMENTE (CAUSARÁ ERRO)
+
+// CHAMA O MÉTODO 'verDados' DO OBJETO
+$objeto->verDados(); 
+
+?>
