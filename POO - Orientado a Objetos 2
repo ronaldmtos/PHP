@@ -1,1 +1,74 @@
+<?php
+
+class Documento { // CLASSE DOCUMENTO
+
+	private $numero; // PROPRIEDADE PRIVADA PARA O NÚMERO DO DOCUMENTO
+
+	public function getNumero(){ // MÉTODO PARA OBTER O NÚMERO
+		return $this->numero; // RETORNA O NÚMERO
+	}
+
+	public function setNumero($numero){ // MÉTODO PARA DEFINIR O NÚMERO
+		$resultado = Documento::validarCPF($numero); // VALIDA O CPF UTILIZANDO O MÉTODO ESTÁTICO
+
+		if($resultado == false){ // SE O CPF NÃO FOR VÁLIDO
+			throw new Exception("CPF informado não é válido.", 1); // LANÇA UMA EXCEÇÃO
+		}
+
+		$this->numero = $numero; // DEFINE O NÚMERO DO DOCUMENTO
+	}
+
+	public static function validarCPF($cpf): bool // MÉTODO ESTÁTICO PARA VALIDAR O CPF
+	{
+		if(empty($cpf)) { // SE O CPF ESTIVER VAZIO
+	        return false; // RETORNA FALSO
+	    }
+	 
+	    $cpf = preg_match('/[0-9]/', $cpf)?$cpf:0; // VERIFICA SE O CPF É NÚMERO
+
+	    $cpf = str_pad($cpf, 11, '0', STR_PAD_LEFT); // COMPLETA O CPF COM ZEROS À ESQUERDA
+	     
+	    if (strlen($cpf) != 11) { // SE O CPF NÃO TIVER 11 DÍGITOS
+	        echo "length"; // EXIBE "length"
+	        return false; // RETORNA FALSO
+	    }
+	    
+	    else if ($cpf == '00000000000' || // SE O CPF FOR UM DOS VÁRIOS CPF INVÁLIDOS
+	        $cpf == '11111111111' || 
+	        $cpf == '22222222222' || 
+	        $cpf == '33333333333' || 
+	        $cpf == '44444444444' || 
+	        $cpf == '55555555555' || 
+	        $cpf == '66666666666' || 
+	        $cpf == '77777777777' || 
+	        $cpf == '88888888888' || 
+	        $cpf == '99999999999') {
+	        return false; // RETORNA FALSO
+
+	     } else { // SE O CPF NÃO FOR INVÁLIDO
+	         
+	        for ($t = 9; $t < 11; $t++) { // LAÇO PARA VALIDAR O CPF
+	             
+	            for ($d = 0, $c = 0; $c < $t; $c++) { // LAÇO PARA CALCULAR O DÍGITO VERIFICADOR
+	                $d += $cpf{$c} * (($t + 1) - $c); // CÁLCULO DO DÍGITO
+	            }
+	            $d = ((10 * $d) % 11) % 10; // CÁLCULO DO DÍGITO
+	            if ($cpf{$c} != $d) { // SE O DÍGITO NÃO COINCIDIR
+	                return false; // RETORNA FALSO
+	            }
+	        }
+	 
+	        return true; // RETORNA VERDADEIRO SE O CPF FOR VÁLIDO
+	    }
+
+	}
+
+}
+
+$cpf = new Documento(); // CRIA UMA NOVA INSTÂNCIA DA CLASSE DOCUMENTO
+$cpf->setNumero("12345678910"); // DEFINE O NÚMERO DO DOCUMENTO
+
+var_dump($cpf->getNumero()); // EXIBE O NÚMERO DO DOCUMENTO
+
+?>
 
