@@ -1,0 +1,33 @@
+<?php
+
+// FUNÇÃO PARA INCLUIR ARQUIVOS DE CLASSES AUTOMATICAMENTE
+function incluirClasses($nomeClasse){
+
+    // VERIFICA SE EXISTE UM ARQUIVO COM O NOME DA CLASSE E EXTENSÃO .PHP
+    if(file_exists($nomeClasse . ".php") === true){
+        // SE EXISTIR, INCLUI O ARQUIVO COM require_once PARA NÃO SER INCLUÍDO NOVAMENTE
+        require_once($nomeClasse . ".php");
+    }
+}
+
+// REGISTRA A FUNÇÃO incluirClasses COMO UM AUTOLOAD
+spl_autoload_register("incluirClasses");
+
+// REGISTRA UM SEGUNDO AUTOLOAD USANDO UMA FUNÇÃO ANÔNIMA
+spl_autoload_register(function($nomeClasse){
+
+    // VERIFICA SE EXISTE UM ARQUIVO DA CLASSE DENTRO DA PASTA "Abstratas"
+	if(file_exists("Abstratas" . DIRECTORY_SEPARATOR . $nomeClasse . ".php") === true){
+        // SE EXISTIR, INCLUI O ARQUIVO COM require_once
+        require_once("Abstratas" . DIRECTORY_SEPARATOR . $nomeClasse . ".php");
+    }
+
+});
+
+// CRIA UM NOVO OBJETO DA CLASSE DelRey
+$carro = new DelRey();
+
+// CHAMA O MÉTODO acelerar DO OBJETO carro, PASSANDO O PARÂMETRO 80
+$carro->acelerar(80);
+
+?>
