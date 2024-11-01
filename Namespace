@@ -1,1 +1,97 @@
+O namespace em PHP organiza e agrupa código para evitar conflitos de nomes entre classes, funções e constantes.
+Isso permite que diferentes módulos ou bibliotecas tenham itens com o mesmo nome sem gerar erro.
+
+
+config.php
+<?php
+
+// REGISTRA UMA FUNÇÃO ANÔNIMA COMO AUTOLOAD
+spl_autoload_register(function($nameClass){
+
+	// MOSTRA O NOME DA CLASSE QUE ESTÁ TENTANDO SER CARREGADA
+	var_dump($nameClass);
+
+	// DEFINE O DIRETÓRIO ONDE AS CLASSES ESTÃO ARMAZENADAS
+	$dirClass = "class";
+	
+	// CRIA O CAMINHO COMPLETO DO ARQUIVO DA CLASSE, CONCATENANDO O DIRETÓRIO E O NOME DA CLASSE
+	$filename = $dirClass . DIRECTORY_SEPARATOR . $nameClass . ".php";
+
+	// VERIFICA SE O ARQUIVO EXISTE NO CAMINHO DEFINIDO
+	if (file_exists($filename)) {
+
+		// SE EXISTIR, INCLUI O ARQUIVO UMA ÚNICA VEZ
+		require_once($filename);
+
+	}
+
+});
+
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+cadastro.php
+
+
+class Cadastro {
+
+	private $nome;
+	private $email;
+	private $senha;
+
+	public function getNome():string
+	{
+		return $this->nome;
+	}
+
+	public function getEmail():string
+	{
+		return $this->email;
+	}
+
+	public function getSenha():string
+	{
+		return $this->senha;
+	}
+
+	public function setNome($nome){
+		$this->nome = $nome;
+	}
+
+	public function setEmail($email){
+		$this->email = $email;
+	}
+
+	public function setSenha($senha){
+		$this->senha = $senha;
+	}
+
+	public function __toString(){
+
+		return json_encode(array(
+			"nome"=>$this->getNome(),
+			"email"=>$this->getEmail(),
+			"senha"=>$this->getSenha()
+		));
+
+	}
+
+}
+
+?>
+
+
+
+
+
 
