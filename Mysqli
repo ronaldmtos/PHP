@@ -1,0 +1,29 @@
+<?php
+
+// CRIA UMA NOVA CONEXÃO COM O BANCO DE DADOS "dbphp7" UTILIZANDO O USUÁRIO "root" E SENHA "root"
+$conn = new mysqli("localhost", "root", "root", "dbphp7");
+
+// VERIFICA SE HOUVE ERRO NA CONEXÃO
+if ($conn->connect_error) {
+    // SE HOUVER ERRO, EXIBE A MENSAGEM E FINALIZA O SCRIPT
+    echo "Error: " . $conn->connect_error;
+    exit;
+}
+
+// PREPARA UM COMANDO SQL PARA INSERIR DADOS NA TABELA "tb_usuarios" UTILIZANDO PARÂMETROS
+$stmt = $conn->prepare("INSERT INTO tb_usuarios (deslogin, dessenha) VALUES(?, ?)");
+
+// ASSOCIA OS PARÂMETROS AO COMANDO SQL, UTILIZANDO "ss" PARA DOIS PARÂMETROS DO TIPO STRING
+$stmt->bind_param("ss", $login, $pass);
+
+// DEFINE OS VALORES DOS PARÂMETROS E EXECUTA O COMANDO PARA INSERIR UM REGISTRO
+$login = "user";
+$pass = "12345";
+$stmt->execute();
+
+// DEFINE NOVOS VALORES PARA OS PARÂMETROS E EXECUTA O COMANDO NOVAMENTE PARA INSERIR OUTRO REGISTRO
+$login = "root";
+$pass = "!@#$";
+$stmt->execute();
+
+?>
