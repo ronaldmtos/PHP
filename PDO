@@ -1,0 +1,19 @@
+<?php
+
+// CRIA UMA NOVA CONEXÃO COM O BANCO DE DADOS USANDO PDO
+// ESTÁ CONFIGURADO PARA CONECTAR A UM BANCO DE DADOS SQL SERVER
+$conn = new PDO("sqlsrv:Database=dbphp7;server=localhost\SQLEXPRESS;ConnectionPooling=0", "sa", "root");
+
+// PREPARA UMA DECLARAÇÃO SQL PARA SELECIONAR TODOS OS DADOS DA TABELA tb_usuarios E ORDENA PELO CAMPO deslogin
+$stmt = $conn->prepare("SELECT * FROM tb_usuarios ORDER BY deslogin;");
+
+// EXECUTA A DECLARAÇÃO SQL
+$stmt->execute();
+
+// OBTÉM TODOS OS RESULTADOS COMO UM ARRAY ASSOCIATIVO
+$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// CONVERTE O ARRAY DE RESULTADOS EM JSON E EXIBE
+echo json_encode($results);
+
+?>
