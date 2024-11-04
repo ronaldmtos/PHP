@@ -1,0 +1,31 @@
+<?php
+
+// CRIA UMA NOVA CONEXÃO COM O BANCO DE DADOS UTILIZANDO PDO
+$conn = new PDO("mysql:dbname=dbphp7;host=localhost", "root", "root");
+
+// PREPARA UMA CONSULTA SQL PARA SELECIONAR TODOS OS REGISTROS DA TABELA tb_usuarios ORDENADOS POR deslogin
+$stmt = $conn->prepare("SELECT * FROM tb_usuarios ORDER BY deslogin;");
+
+// EXECUTA A CONSULTA PREPARADA
+$stmt->execute();
+
+// BUSCA TODOS OS RESULTADOS COMO UM ARRAY ASSOCIATIVO (PDO::FETCH_ASSOC PEGA APENAS OS NOMES DAS COLUNAS)
+$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// PERCORRE CADA REGISTRO RETORNADO (CADA LINHA DA TABELA)
+foreach($results as $row) {
+
+	// PARA CADA LINHA, PERCORRE CADA CHAVE E VALOR
+	foreach ($row as $key => $value) {
+		
+		// EXIBE A CHAVE (NOME DA COLUNA) E O VALOR ASSOCIADO
+		echo "<strong>".$key.":</strong>".$value."<br/>";
+
+	}
+
+	// LINHA DIVISÓRIA ENTRE OS REGISTROS PARA MELHOR VISUALIZAÇÃO
+	echo "====================================================<br/>";
+
+}
+
+?>
