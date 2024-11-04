@@ -1,0 +1,25 @@
+<?php
+
+// ESTABELECE UMA CONEXÃO COM O BANCO DE DADOS MYSQL USANDO PDO
+// CONECTA-SE AO BANCO dbphp7 NA MÁQUINA LOCAL, COM USUÁRIO "root" E SENHA "root"
+$conn = new PDO("mysql:host=localhost;dbname=dbphp7", "root", "root");
+
+// INICIA UMA TRANSAÇÃO
+$conn->beginTransaction();
+
+// PREPARA UMA DECLARAÇÃO SQL PARA DELETAR UM REGISTRO DA TABELA tb_usuarios ONDE idusuario = ?
+$stmt = $conn->prepare("DELETE FROM tb_usuarios WHERE idusuario = ?");
+
+// DEFINE O ID DO USUÁRIO A SER DELETADO
+$id = 2;
+
+// EXECUTA A DECLARAÇÃO SQL, PASSANDO O ID COMO PARÂMETRO
+$stmt->execute(array($id));
+
+// $conn->rollback(); // ESSA LINHA ESTÁ COMENTADA, MAS, SE ATIVADA, CANCELARIA A TRANSAÇÃO
+$conn->commit(); // CONFIRMA A TRANSAÇÃO E EXECUTA A EXCLUSÃO NO BANCO DE DADOS
+
+// EXIBE MENSAGEM DE CONFIRMAÇÃO
+echo "Delete OK!";
+
+?>
