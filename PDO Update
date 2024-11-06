@@ -1,0 +1,24 @@
+<?php
+
+// CRIA UMA CONEXÃO COM O BANCO DE DADOS MYSQL USANDO PDO
+$conn = new PDO("mysql:dbname=dbphp7;host=localhost", "root", "root");
+
+// PREPARA UMA DECLARAÇÃO SQL PARA ATUALIZAR O REGISTRO NA TABELA tb_usuarios
+$stmt = $conn->prepare("UPDATE tb_usuarios SET desslogin = :LOGIN, dessenha = :PASSWORD WHERE idusuario = :ID");
+
+// DEFINE OS VALORES QUE SERÃO USADOS PARA ATUALIZAR O REGISTRO
+$login = "joao";
+$password = "qwerty";
+$id = 2;
+
+// VINCULA OS PARÂMETROS DA DECLARAÇÃO SQL AOS VALORES DEFINIDOS
+$stmt->bindParam(":LOGIN", $login);
+$stmt->bindParam(":PASSWORD", $password);
+$stmt->bindParam(":ID", $id);
+
+// EXECUTA A DECLARAÇÃO SQL
+$stmt->execute();
+
+echo "Alterado OK!";
+
+?>
