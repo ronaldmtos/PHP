@@ -1,1 +1,82 @@
 Class SQL 
+<?php 
+
+// DEFINE A CLASSE SQL, QUE HERDA DE PDO (CONEXÃO COM O BANCO)
+class Sql extends PDO {
+
+	// ATRIBUTO PRIVADO PARA ARMAZENAR A CONEXÃO COM O BANCO
+	private $conn;
+
+	// MÉTODO CONSTRUTOR PARA INICIAR A CONEXÃO COM O BANCO DE DADOS
+	public function __construct(){
+
+		// ESTABELECE A CONEXÃO COM O BANCO DE DADOS MYSQL
+		$this->conn = new PDO("mysql:host=localhost;dbname=dbphp7", "root", "root");
+
+	}
+
+	// MÉTODO PRIVADO PARA CONFIGURAR MULTIPLOS PARÂMETROS NA DECLARAÇÃO
+	private function setParams($statement, $parameters = array()){
+
+		// FAZ UM LOOP EM TODOS OS PARÂMETROS PASSADOS
+		foreach ($parameters as $key => $value) {
+			
+			// CHAMA O MÉTODO SETPARAM PARA DEFINIR CADA PARÂMETRO INDIVIDUAL
+			$this->setParam($statement, $key, $value);
+
+		}
+
+	}
+
+	// MÉTODO PRIVADO PARA DEFINIR UM ÚNICO PARÂMETRO NA DECLARAÇÃO
+	private function setParam($statement, $key, $value){
+
+		// ASSOCIA O VALOR AO PARÂMETRO ESPECÍFICO NA DECLARAÇÃO PREPARADA
+		$statement->bindParam($key, $value);
+
+	}
+
+	// MÉTODO PÚBLICO PARA EXECUTAR UMA CONSULTA SQL CRUA (RAW QUERY)
+	public function query($rawQuery, $params = array()){
+
+		// PREPARA A CONSULTA SQL CRUA
+		$stmt = $this->conn->prepare($rawQuery);
+
+		// CONFIGURA OS PARÂMETROS PASSADOS
+		$this->setParams($stmt, $params);
+
+		// EXECUTA A CONSULTA
+		$stmt->execute();
+
+		// RETORNA O OBJETO DECLARAÇÃO (STATEMENT) RESULTANTE
+		return $stmt;
+
+	}
+
+	// MÉTODO PÚBLICO PARA EXECUTAR CONSULTAS DE SELEÇÃO E RETORNAR RESULTADOS COMO ARRAY
+	public function select($rawQuery, $params = array()):array
+	{
+
+		// CHAMA O MÉTODO QUERY PARA EXECUTAR A CONSULTA
+		$stmt = $this->query($rawQuery, $params);
+
+		// RETORNA TODOS OS RESULTADOS DA CONSULTA COMO UM ARRAY ASSOCIATIVO
+		return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+	}
+
+}
+
+?>
+
+
+
+
+
+
+
+
+
+
+
+
