@@ -22,3 +22,30 @@ $stmt->execute();
 echo "Alterado OK!";
 
 ?>
+
+
+
+
+
+<?php
+
+// CRIA UMA CONEXÃO COM O BANCO DE DADOS USANDO PDO
+$conn = new PDO("mysql:host=localhost;dbname=dbphp7", "root", "root");
+
+// PREPARA UM COMANDO SQL PARA DELETAR UM REGISTRO DA TABELA tb_usuarios
+$stmt = $conn->prepare("DELETE FROM tb_usuarios WHERE idusuario = :ID");
+
+// DEFINE O VALOR DA VARIÁVEL $id
+$id = 1;
+
+// VINCULA O PARÂMETRO :ID AO VALOR DA VARIÁVEL $id
+$stmt->bindParam(":ID", $id);
+
+// EXECUTA O COMANDO SQL PREPARADO
+$stmt->execute();
+
+// EXIBE UMA MENSAGEM DE CONFIRMAÇÃO
+echo "Delete OK!";
+
+?>
+
