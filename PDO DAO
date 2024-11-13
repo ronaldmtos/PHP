@@ -80,3 +80,10 @@ class Sql extends PDO {
 
 
 
+
+
+Class config
+
+
+
+
