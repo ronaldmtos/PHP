@@ -1,3 +1,41 @@
+config 
+
+//Essa função registra uma função de autoload, permitindo que o PHP carregue 
+//automaticamente as classes quando são usadas, sem a necessidade de incluí-las manualmente.
+spl_autoload_register(function($class_name){
+
+    // Define o caminho do arquivo que contém a classe
+    $filename = "class".DIRECTORY_SEPARATOR.$class_name.".php";
+
+    // Verifica se o arquivo existe antes de incluí-lo
+    if (file_exists($filename)) {
+        require_once($filename);
+    }
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Class SQL 
 <?php 
 
