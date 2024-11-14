@@ -1,0 +1,129 @@
+<?php
+
+// Array para armazenar o início e o término das férias
+$ferias = array(
+    "inicio" => "2024-12-20",  // Data de início das férias
+    "termino" => "2025-01-10"  // Data de término das férias
+);
+
+// Exibindo as datas de início e término
+echo "Início das férias: " . $ferias["inicio"] . "<br>";
+echo "Término das férias: " . $ferias["termino"];
+
+?>
+
+
+
+
+
+
+
+
+
+CRIAR CADASTRO DE FERIAS COM INICIO, TERMINO, REFERENTE A QUAL ANO E PERIODO
+
+
+<?php
+
+    $inicio = $_POST["inicio"];
+    $termino = $_POST["termino"];
+    $referente
+    
+    // Cria o array com as datas de férias
+    $ferias = array(
+        "inicio" => $inicio,
+        "termino" => $termino
+    );
+
+    // Exibe as datas inseridas pelo usuário
+    echo "Início das férias: " . $ferias["inicio"] . "<br>";
+    echo "Término das férias: " . $ferias["termino"];
+}
+?>
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Férias</title>
+</head>
+<body>
+
+<h2>Informe as Datas de Início e Término das Férias</h2>
+<form method="post" action="">
+    <label for="inicio">Data de Início:</label>
+    <input type="date" id="inicio" name="inicio" required><br><br>
+
+    <label for="termino">Data de Término:</label>
+    <input type="date" id="termino" name="termino" required><br><br>
+
+    <input type="submit" value="Salvar">
+</form>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $inicio = $_POST["inicio"];
+    $termino = $_POST["termino"];
+    $referente = $_POST["referente"];
+    $periodo = $_POST["periodo"];
+    
+    $ferias = array(
+        "inicio" => $inicio,
+        "termino" => $termino,
+        "referente" => $referente,
+        "periodo" => $periodo
+    );
+
+    echo "Início das férias: " . $ferias["inicio"] . "<br>";
+    echo "Término das férias: " . $ferias["termino"] . "<br>";
+    echo "Referente ao ano: " . $ferias["referente"] . "<br>";
+    echo "Período: " . $ferias["periodo"];
+}
+?>
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Férias</title>
+</head>
+<body>
+
+<h2>Informe as Datas de Início e Término das Férias</h2>
+<form method="post" action="">
+    <label for="inicio">Data de Início:</label>
+    <input type="date" id="inicio" name="inicio" required><br><br>
+
+    <label for="termino">Data de Término:</label>
+    <input type="date" id="termino" name="termino" required><br><br>
+
+    <label for="referente">Ano Referente:</label>
+    <input type="number" id="referente" name="referente" min="2000" max="2100" required><br><br>
+
+    <label for="periodo">Período:</label>
+    <select id="periodo" name="periodo" required>
+        <option value="Primeiro Semestre">Primeiro Semestre</option>
+        <option value="Segundo Semestre">Segundo Semestre</option>
+    </select><br><br>
+
+    <input type="submit" value="Salvar">
+</form>
+
+</body>
+</html>
