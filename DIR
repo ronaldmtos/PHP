@@ -1,0 +1,62 @@
+<?php
+
+$name = "images";
+
+// VERIFICA SE O DIRETÓRIO EXISTE
+if (!is_dir($name)) {
+
+    // CRIA O DIRETÓRIO SE ELE NÃO EXISTIR
+    mkdir($name);
+    echo "Diretório $name criado com sucesso!";
+
+} else {
+
+    // REMOVE O DIRETÓRIO SE ELE JÁ EXISTIR
+    rmdir($name);
+    echo "Já existe o diretório: $name foi removido";
+
+}
+
+?>
+
+
+
+
+<?php
+
+// SCANEIA O DIRETÓRIO "IMAGES" E RETORNA UM ARRAY COM TODOS OS ARQUIVOS E DIRETÓRIOS PRESENTES
+$images = scandir("images");
+
+// CRIA UM ARRAY VAZIO PARA ARMAZENAR OS DADOS DOS ARQUIVOS
+$data = array();
+
+// PERCORRE CADA ITEM DO ARRAY $images
+foreach ($images as $img) {
+    // IGNORA OS ITENS "." E ".." QUE REPRESENTAM OS DIRETÓRIOS ATUAIS E PAI
+    if (!in_array($img, array(".", ".."))) {
+
+        // MONTA O CAMINHO COMPLETO DO ARQUIVO
+        $filename = "images" . DIRECTORY_SEPARATOR . $img;
+
+        // OBTÉM INFORMAÇÕES DO ARQUIVO COMO NOME, EXTENSÃO, ETC.
+        $info = pathinfo($filename);
+
+        // ADICIONA O TAMANHO DO ARQUIVO AO ARRAY $info
+        $info['size'] = filesize($filename);
+
+        // ADICIONA A DATA DA ÚLTIMA MODIFICAÇÃO AO ARRAY $info
+        $info['modified'] = date("d/m/Y H:i:s", filemtime($filename));
+
+        // ADICIONA A URL COMPLETA DO ARQUIVO AO ARRAY $info
+        $info['url'] = "http://localhost/DIR/". str_replace("\\", "/", $filename);
+
+        // ADICIONA AS INFORMAÇÕES DO ARQUIVO AO ARRAY $data
+        array_push($data, $info);
+
+    }
+}
+
+// CONVERTE O ARRAY $data PARA O FORMATO JSON E IMPRIME O RESULTADO
+echo json_encode($data);
+
+?>
