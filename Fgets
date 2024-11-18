@@ -1,1 +1,45 @@
+<?php
 
+// DEFINE O NOME DO ARQUIVO CSV
+$filename = "usuarios.csv";
+
+// VERIFICA SE O ARQUIVO EXISTE
+if (file_exists($filename)) {
+
+    // ABRE O ARQUIVO EM MODO DE LEITURA ("r" - READ)
+    $file = fopen($filename, "r");
+
+    // LÊ A PRIMEIRA LINHA DO ARQUIVO PARA OBTER OS CABEÇALHOS (COLUNAS)
+    $headers = explode(",", fgets($file));
+
+    // CRIA UM ARRAY PARA ARMAZENAR OS DADOS DO ARQUIVO
+    $data = array();
+
+    // LÊ CADA LINHA DO ARQUIVO ATÉ O FINAL
+    while ($row = fgets($file)) {
+
+        // DIVIDE OS DADOS DA LINHA EM UM ARRAY USANDO A VÍRGULA COMO DELIMITADOR
+        $rowData = explode(",", $row);
+
+        // CRIA UM ARRAY PARA ARMAZENAR OS DADOS DA LINHA
+        $linha = array();
+
+        // ASSOCIA CADA VALOR DA LINHA AO CABEÇALHO CORRESPONDENTE
+        for ($i = 0; $i < count($headers); $i++) { 
+            $linha[$headers[$i]] = $rowData[$i];
+        }
+
+        // ADICIONA A LINHA FORMATADA AO ARRAY DE DADOS
+        array_push($data, $linha);
+
+    }
+
+    // FECHA O ARQUIVO APÓS LER TODOS OS DADOS
+    fclose($file);
+
+    // CONVERTE O ARRAY DE DADOS EM JSON E EXIBE
+    echo json_encode($data);
+
+}
+
+?>
