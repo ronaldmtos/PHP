@@ -1,0 +1,21 @@
+<?php
+
+// VERIFICA SE O DIRETÓRIO "IMAGES" EXISTE, SE NÃO EXISTIR, CRIA O DIRETÓRIO
+if (!is_dir("images")) mkdir("images");
+
+// PERCORRE TODOS OS ARQUIVOS DENTRO DO DIRETÓRIO "IMAGES"
+foreach (scandir("images") as $item) {	
+
+    // IGNORA OS ITENS "." E ".." QUE REPRESENTAM O DIRETÓRIO ATUAL E O DIRETÓRIO PAI
+    if(!in_array($item, array(".", ".."))) {
+
+        // REMOVE O ARQUIVO ATUAL DO DIRETÓRIO "IMAGES"
+        unlink("images/".$item);
+
+    }
+}
+
+// EXIBE UMA MENSAGEM DE SUCESSO
+echo "OK";
+
+?>
