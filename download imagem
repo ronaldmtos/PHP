@@ -1,0 +1,33 @@
+<?php
+
+// Define o link para a imagem que será baixada
+$link = "https://www.google.com.br/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png";
+
+// Obtém o conteúdo da imagem através do link fornecido usando file_get_contents().
+// Essa função faz uma solicitação HTTP e retorna os dados do arquivo como uma string.
+$content = file_get_contents($link);
+
+// Analisa o link fornecido para obter suas partes (ex: esquema, host, caminho, etc.).
+// A função parse_url() retorna um array contendo as partes do URL.
+$parse = parse_url($link);
+
+// Obtém apenas o nome do arquivo (parte final do caminho) usando basename().
+// Neste caso, seria "googlelogo_color_272x92dp.png".
+$basename = basename($parse['path']);
+
+// Abre ou cria um arquivo local com o mesmo nome obtido anteriormente.
+// O modo "w+" significa que o arquivo será criado se não existir e sobrescrito se já existir.
+$file = fopen($basename, "w+");
+
+// Escreve o conteúdo da imagem baixada no arquivo local.
+// fwrite() grava os dados no arquivo aberto por fopen().
+fwrite($file, $content);
+
+// Fecha o arquivo após a escrita, liberando os recursos do sistema.
+fclose($file);
+
+?>
+
+<!-- Exibe a imagem baixada no navegador usando a tag <img>. 
+     A variável $basename contém o nome do arquivo baixado, que será usado como fonte (src). -->
+<img src="<?=$basename?>">
