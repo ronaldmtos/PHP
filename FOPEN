@@ -1,0 +1,47 @@
+<?php
+
+// Importa o arquivo de configuração (config.php) para conectar ao banco de dados
+require_once("config.php");
+
+// Cria uma instância da classe Sql para executar comandos no banco de dados
+$sql = new Sql();
+
+// Executa uma consulta SQL para buscar todos os usuários da tabela "tb_usuarios" ordenados pelo campo "deslogin"
+$usuarios = $sql->select("SELECT * FROM tb_usuarios ORDER BY deslogin");
+
+// Cria um array para armazenar os cabeçalhos das colunas
+$headers = array();
+
+// Percorre as chaves (nomes das colunas) do primeiro registro retornado
+foreach ($usuarios[0] as $key => $value) {
+    // Adiciona cada nome de coluna ao array $headers, com a primeira letra maiúscula (ucfirst)
+    array_push($headers, ucfirst($key));
+}
+
+// Abre (ou cria) o arquivo "usuarios.csv" no modo "w+" (escrita e leitura, sobrescrevendo o conteúdo existente)
+$file = fopen("usuarios.csv", "w+");
+
+// Escreve os cabeçalhos no arquivo, separados por vírgulas, seguidos de uma nova linha (\r\n)
+fwrite($file, implode(",", $headers) . "\r\n");
+
+// Percorre cada linha de dados (usuário) retornada do banco de dados
+foreach ($usuarios as $row) {
+    
+    // Cria um array para armazenar os valores da linha atual
+    $data = array();
+
+    // Percorre os valores da linha atual
+    foreach ($row as $key => $value) {
+        // Adiciona cada valor ao array $data
+        array_push($data, $value);
+    } // End Foreach de coluna
+
+    // Escreve os dados da linha no arquivo, separados por vírgulas, seguidos de uma nova linha (\r\n)
+    fwrite($file, implode(",", $data) . "\r\n");
+
+} // End Foreach de linha
+
+// Fecha o arquivo "usuarios.csv"
+fclose($file);
+
+?>
