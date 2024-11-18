@@ -1,0 +1,57 @@
+<form method="POST" enctype="multipart/form-data">
+	<!-- Este é o formulário para enviar arquivos. O método 'POST' é usado para enviar dados de forma segura. 
+		O atributo 'enctype="multipart/form-data"' é necessário para o envio de arquivos (não é necessário para texto simples). -->
+	
+	<input type="file" name="fileUpload">
+	<!-- Este é o campo de input do tipo 'file', que permite ao usuário selecionar um arquivo para enviar. 
+		O atributo 'name="fileUpload"' define o nome do campo de input, que é usado no PHP para acessar o arquivo enviado. -->
+	
+	<button type="submit">Send</button>
+	<!-- Este é o botão de envio do formulário. Quando clicado, o formulário será enviado para o servidor -->
+</form>
+
+<?php
+
+// Verifica se o método da requisição é 'POST', ou seja, se o formulário foi enviado.
+if ($_SERVER['REQUEST_METHOD'] === "POST") {
+
+	// Recupera as informações do arquivo enviado pelo formulário usando o índice 'fileUpload' do array $_FILES.
+	$file = $_FILES['fileUpload'];
+
+	// Verifica se houve algum erro durante o envio do arquivo. O índice 'error' de $_FILES contém o código de erro, 
+	// que será diferente de 0 se houver falhas. 
+	if ($file['error']) {
+
+		// Se ocorrer um erro, lança uma exceção com a mensagem de erro detalhada.
+		throw new Exception("Error: ".$file['error']);		
+
+	}
+
+	// Define o diretório onde os arquivos enviados serão armazenados.
+	$dirUploads = "uploads";
+
+	// Verifica se o diretório de uploads já existe. A função is_dir() retorna true se o diretório existe.
+	if (!is_dir($dirUploads)) {
+
+		// Se o diretório não existir, cria o diretório usando a função mkdir().
+		// DIRECTORY_SEPARATOR é usado para garantir que o separador de diretórios seja o correto para o sistema operacional (ex: '/' no Linux e '\' no Windows).
+		mkdir($dirUploads);
+
+	}
+
+	// Tenta mover o arquivo enviado da pasta temporária (onde o servidor armazena arquivos antes do processamento) para o diretório 'uploads'.
+	// O parâmetro 'tmp_name' contém o caminho temporário do arquivo no servidor.
+	// O segundo parâmetro define o destino do arquivo, que será a pasta 'uploads' com o nome original do arquivo.
+	if (move_uploaded_file($file['tmp_name'], $dirUploads . DIRECTORY_SEPARATOR . $file['name'])) {
+
+		// Se o arquivo for movido com sucesso para o diretório de uploads, exibe a mensagem de sucesso.
+		echo "Upload realizado com sucesso!";
+
+	} else {
+
+		// Se ocorrer algum problema durante o movimento do arquivo, lança uma exceção.
+		throw new Exception("Não foi possível realizar o upload.");
+	}
+
+}
+?>
