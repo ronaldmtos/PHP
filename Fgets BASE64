@@ -1,0 +1,24 @@
+<?php
+
+// Definindo o nome do arquivo da imagem que será convertida para base64.
+$filename = "logo.png";
+
+// Lê o conteúdo do arquivo de imagem e codifica para base64.
+$base64 = base64_encode(file_get_contents($filename));
+
+// Cria um novo objeto finfo para determinar o tipo MIME do arquivo.
+$fileinfo = new finfo(FILEINFO_MIME_TYPE);
+
+// Obtém o tipo MIME do arquivo de imagem (exemplo: image/png).
+$mimetype = $fileinfo->file($filename);
+
+// Prepara a string base64 completa com o tipo MIME para ser usada no HTML.
+$base64encode = "data:" . $mimetype . ";base64," . $base64;
+
+?>
+
+<!-- Link para a imagem, que quando clicado, abrirá a imagem em uma nova aba -->
+<a href="<?=$base64encode?>" target="_blank">Link para Imagem</a>
+
+<!-- Exibe a imagem diretamente na página HTML, utilizando o código base64 como fonte -->
+<img src="<?=$base64encode?>">
