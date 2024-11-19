@@ -1,3 +1,9 @@
+fopen é usado para abrir arquivos em diferentes modos.
+Combine com funções como fwrite, fgets, fclose para manipular o conteúdo.
+Sempre feche o arquivo com fclose após terminar de usá-lo.
+
+
+
 <?php
 
 // Importa o arquivo de configuração (config.php) para conectar ao banco de dados
