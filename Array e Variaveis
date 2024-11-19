@@ -1,3 +1,7 @@
+Um array é uma lista que pode guardar muitos valores de uma vez, identificados por índices numéricos
+ou chaves personalizadas. Ele é uma ferramenta essencial para organizar dados em PHP.
+
+
 <?php
 
 echo "Meu primeiro código PHP! Hello World"; //print
