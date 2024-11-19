@@ -1,3 +1,9 @@
+Em PHP, diretórios são manipulados com funções como mkdir, rmdir, opendir, e readdir. 
+Isso permite criar, listar e remover diretórios, além de navegar pelo sistema de arquivos.
+
+
+
+
 <?php
 
 $name = "images";
