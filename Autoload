@@ -1,3 +1,11 @@
+O autoload em PHP é uma maneira automática de carregar classes ou interfaces sem precisar usar require ou include manualmente. 
+Ele é útil para organizar melhor o código, especialmente em projetos grandes.
+Registro do autoload: Use spl_autoload_register() para registrar uma função que será chamada automaticamente quando uma classe ou interface for usada pela primeira vez.
+
+
+
+
+
 <?php
 
 // FUNÇÃO PARA INCLUIR ARQUIVOS DE CLASSES AUTOMATICAMENTE
