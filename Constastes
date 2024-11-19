@@ -1,2 +1,6 @@
+Constantes são valores fixos definidos com define ou const, usados para manter valores 
+imutáveis no código, garantindo segurança e consistência.
+
+
 define("SERVIDOR", "127.0.0.1");                    //Constantes são acessadas sem o $
 echo SERVIDOR;  // Saída: 127.0.0.1
