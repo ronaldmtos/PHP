@@ -1,0 +1,30 @@
+cURL no PHP é uma ferramenta usada para fazer requisições para outros servidores, como acessar APIs ou baixar dados.
+
+
+<?php
+
+$cep = "01310100"; // CEP QUE SERÁ CONSULTADO
+$link = "https://viacep.com.br/ws/$cep/json/"; // LINK DA API VIA CEP COM O CEP INSERIDO
+
+// INICIALIZA A SESSÃO cURL COM A URL DA API
+$ch = curl_init($link);
+
+// CONFIGURA PARA RETORNAR O RESULTADO COMO STRING
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+// DESABILITA A VERIFICAÇÃO DE CERTIFICADO SSL (NÃO RECOMENDADO EM PRODUÇÃO)
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+
+// EXECUTA A REQUISIÇÃO cURL E ARMAZENA A RESPOSTA
+$response = curl_exec($ch);
+
+// FECHA A SESSÃO cURL
+curl_close($ch);
+
+// DECODIFICA O JSON DA RESPOSTA PARA UM ARRAY ASSOCIATIVO
+$data = json_decode($response, true);
+
+// IMPRIME OS DADOS OBTIDOS
+print_r($data);
+
+?>
