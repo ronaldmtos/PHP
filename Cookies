@@ -1,0 +1,34 @@
+Um cookie em PHP é um dado armazenado no navegador para manter informações, como preferências ou sessões.
+<?php
+
+// CRIA UM ARRAY COM DADOS QUE SERÃO ARMAZENADOS NO COOKIE
+$data = array(
+    "empresa" => "Hcode Treinamentos"
+);
+
+// DEFINE O COOKIE COM O NOME "NOME_DO_COOKIE", CONVERTENDO O ARRAY EM JSON E DEFININDO O TEMPO DE EXPIRAÇÃO (1 HORA)
+setcookie("NOME_DO_COOKIE", json_encode($data), time() + 3600);
+
+// EXIBE A MENSAGEM "OK" PARA INFORMAR QUE O PROCESSO FOI REALIZADO
+echo "OK";
+
+?>
+
+
+
+
+
+<?php
+
+// VERIFICA SE O COOKIE "NOME_DO_COOKIE" ESTÁ DEFINIDO
+if (isset($_COOKIE['NOME_DO_COOKIE'])) {
+
+    // DECODIFICA O CONTEÚDO DO COOKIE DE JSON PARA UM OBJETO PHP
+    $obj = json_decode($_COOKIE['NOME_DO_COOKIE']);
+
+    // EXIBE A PROPRIEDADE "EMPRESA" DO OBJETO DECODIFICADO
+    echo $obj->empresa;
+
+}
+
+?>
