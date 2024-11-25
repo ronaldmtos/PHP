@@ -19,3 +19,59 @@ try {
 
 ?>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?php
+
+// FUNÇÃO PARA TRATAR O NOME
+function trataNome($name) {
+
+    // VERIFICA SE O NOME FOI INFORMADO
+    if (!$name){
+
+        // SE NÃO HOUVER NOME, LANÇA UMA EXCEÇÃO COM MENSAGEM E CÓDIGO DE ERRO
+        throw new Exception("Nenhum nome foi informado.", 1);        
+
+    }
+
+    // IMPRIME O NOME COM A PRIMEIRA LETRA EM MAIÚSCULA
+    echo ucfirst($name)."<br>";
+
+}
+
+// BLOCO TENTANDO EXECUTAR O CÓDIGO
+try {
+
+    // CHAMA A FUNÇÃO COM UM NOME VÁLIDO
+    trataNome("João");
+
+    // CHAMA A FUNÇÃO COM UM NOME VAZIO (GERARÁ ERRO)
+    trataNome("");
+
+} catch (Exception $e) {
+
+    // CAPTURA O ERRO E EXIBE A MENSAGEM DA EXCEÇÃO
+    echo $e->getMessage();
+
+} finally {
+
+    // ESTE CÓDIGO SERÁ EXECUTADO SEMPRE, INDEPENDENTEMENTE DE ERROS
+    echo "Executou o Try!";
+
+}
+
+?>
