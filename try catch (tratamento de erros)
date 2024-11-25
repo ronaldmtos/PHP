@@ -1,0 +1,21 @@
+<?php
+
+try {
+
+	// LANÇA UMA EXCEÇÃO MANUALMENTE COM UMA MENSAGEM E UM CÓDIGO
+	throw new Exception("HOUVE UM ERRO.", 400);	
+
+} catch (Exception $e) {
+
+	// CRIA UM ARRAY ASSOCIATIVO COM OS DETALHES DA EXCEÇÃO E O CONVERTE PARA JSON
+	echo json_encode(array(
+		"message" => $e->getMessage(), // PEGA A MENSAGEM DA EXCEÇÃO ("HOUVE UM ERRO.")
+		"line" => $e->getLine(),       // PEGA A LINHA ONDE A EXCEÇÃO FOI LANÇADA
+		"file" => $e->getFile(),       // PEGA O ARQUIVO ONDE A EXCEÇÃO FOI LANÇADA
+		"code" => $e->getCode()        // PEGA O CÓDIGO DA EXCEÇÃO (400)
+	));
+
+}
+
+?>
+
