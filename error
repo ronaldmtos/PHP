@@ -1,0 +1,47 @@
+<?php
+
+// FUNÇÃO PERSONALIZADA PARA TRATAR ERROS
+function error_handler($code, $message, $file, $line){
+
+    // EXIBE OS DETALHES DO ERRO EM FORMATO JSON
+    echo json_encode(array(
+        "code" => $code,       // CÓDIGO DO ERRO
+        "message" => $message, // MENSAGEM DESCRITIVA DO ERRO
+        "line" => $line,       // LINHA ONDE O ERRO OCORREU
+        "file" => $file        // ARQUIVO ONDE O ERRO OCORREU
+    ));
+
+}
+
+// DEFINE A FUNÇÃO PERSONALIZADA COMO O MANIPULADOR DE ERROS
+set_error_handler("error_handler");
+
+// PROVOCA UM ERRO DIVIDINDO POR ZERO
+echo 100 / 0;
+
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?php
+
+// CONFIGURA O PHP PARA EXIBIR TODOS OS TIPOS DE ERROS, EXCETO AVISOS (NOTICE)
+error_reporting(E_ALL & ~E_NOTICE);
+
+// PEGA O PARÂMETRO 'NOME' DA URL USANDO O MÉTODO GET
+$nome = $_GET['nome'];
+
+// IMPRIME O VALOR DO PARÂMETRO 'NOME'
+echo $nome;
+
+?>
