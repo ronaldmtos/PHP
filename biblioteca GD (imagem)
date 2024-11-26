@@ -1,1 +1,67 @@
+A biblioteca GD em PHP é usada para a manipulação de imagens. Ela permite criar, modificar e exibir imagens dinâmicas diretamente em scripts PHP. 
 
+<?php
+// DEFINE O TIPO DE CONTEÚDO COMO UMA IMAGEM PNG
+header("Content-Type: image/png");
+
+// CRIA UMA NOVA IMAGEM COM DIMENSÕES DE 256x256 PIXELS
+$image = imagecreate(256, 256);
+
+// DEFINE UMA COR PRETA COMO FUNDO DA IMAGEM
+$black = imagecolorallocate($image, 0, 0, 0);
+
+// DEFINE UMA COR VERMELHA PARA O TEXTO
+$red = imagecolorallocate($image, 255, 0, 0);
+
+// ESCREVE UMA STRING NA IMAGEM COM TAMANHO DE FONTE 5, NA POSIÇÃO X=60, Y=120
+imagestring($image, 5, 60, 120, "Curso de PHP 7", $red);
+
+// GERA A IMAGEM NO FORMATO PNG E A ENVIA PARA O NAVEGADOR
+imagepng($image);
+
+// LIBERA A MEMÓRIA ASSOCIADA À IMAGEM
+imagedestroy($image);
+
+?>
+
+
+
+
+
+
+
+<?php
+
+// CARREGA UMA IMAGEM EXISTENTE (ARQUIVO JPEG) COMO BASE
+$image = imagecreatefromjpeg("certificado.jpg");
+
+// DEFINE UMA COR PRETA PARA O TEXTO
+$titleColor = imagecolorallocate($image, 0, 0, 0);
+
+// DEFINE UMA COR CINZA (NÃO UTILIZADA NESTE CÓDIGO, MAS PODE SER ÚTIL)
+$gray = imagecolorallocate($image, 100, 100, 100);
+
+// ADICIONA O TÍTULO "CERTIFICADO" NA IMAGEM COM TAMANHO DE FONTE 5
+// POSIÇÃO: X=450, Y=150
+imagestring($image, 5, 450, 150, "CERTIFICADO", $titleColor);
+
+// ADICIONA O NOME "DIVANEI APARECIDO" COM TAMANHO DE FONTE 5
+// POSIÇÃO: X=440, Y=350
+imagestring($image, 5, 440, 350, "Divanei Aparecido", $titleColor);
+
+// ADICIONA A DATA DE CONCLUSÃO NA IMAGEM
+// UTILIZA UTF-8 PARA DECODIFICAR CARACTERES ESPECIAIS COMO ACENTOS
+// TAMANHO DE FONTE: 3, POSIÇÃO: X=440, Y=370
+imagestring($image, 3, 440, 370, utf8_decode("Concluído em: ").date("d/m/Y"), $titleColor);
+
+// DEFINE O TIPO DE CONTEÚDO COMO UMA IMAGEM JPEG
+header("Content-type: image/jpeg");
+
+// GERA E SALVA A IMAGEM MODIFICADA COM O NOME "CERTIFICADO-YYYY-MM-DD.JPG"
+// QUALIDADE: 10 (VALOR ENTRE 0 E 100, SENDO 100 A MELHOR QUALIDADE)
+imagejpeg($image, "certificado-".date("Y-m-d").".jpg", 10);
+
+// LIBERA A MEMÓRIA ASSOCIADA À IMAGEM
+imagedestroy($image);
+
+?>
