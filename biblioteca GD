@@ -1,0 +1,41 @@
+<?php
+
+// DEFINE O TIPO DE CONTEÚDO DA RESPOSTA COMO UMA IMAGEM JPEG
+header("Content-type: image/jpeg");
+
+// NOME DO ARQUIVO ORIGINAL QUE SERÁ REDIMENSIONADO
+$file = "wallpaper.jpg";
+
+// NOVAS DIMENSÕES PARA A IMAGEM
+$new_width = 256;  // NOVA LARGURA EM PIXELS
+$new_height = 256; // NOVA ALTURA EM PIXELS
+
+// OBTÉM A LARGURA E ALTURA DA IMAGEM ORIGINAL
+list($old_width, $old_height) = getimagesize($file);
+
+// CRIA UMA NOVA IMAGEM VAZIA COM AS DIMENSÕES DEFINIDAS
+$new_image = imagecreatetruecolor($new_width, $new_height);
+
+// CARREGA A IMAGEM ORIGINAL A PARTIR DO ARQUIVO JPEG
+$old_image = imagecreatefromjpeg($file);
+
+// REDIMENSIONA A IMAGEM ORIGINAL E COPIA PARA A NOVA IMAGEM
+imagecopyresampled(
+    $new_image,     // DESTINO: NOVA IMAGEM
+    $old_image,     // FONTE: IMAGEM ORIGINAL
+    0, 0,           // POSIÇÃO INICIAL NA NOVA IMAGEM
+    0, 0,           // POSIÇÃO INICIAL NA IMAGEM ORIGINAL
+    $new_width,     // NOVA LARGURA
+    $new_height,    // NOVA ALTURA
+    $old_width,     // LARGURA ORIGINAL
+    $old_height     // ALTURA ORIGINAL
+);
+
+// EXIBE A NOVA IMAGEM REDIMENSIONADA DIRETAMENTE NO NAVEGADOR
+imagejpeg($new_image);
+
+// LIBERA A MEMÓRIA ALOCADA PARA AS IMAGENS (BOA PRÁTICA)
+imagedestroy($old_image);
+imagedestroy($new_image);
+
+?>
