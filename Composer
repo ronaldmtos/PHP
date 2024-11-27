@@ -1,0 +1,7 @@
+ Composer é uma ferramenta que ajuda a adicionar e gerenciar bibliotecas no seu projeto PHP de forma fácil e organizada.
+
+
+O que ele faz?
+Baixa bibliotecas: Por exemplo, se você precisa de uma função extra, o Composer baixa e instala.
+Mantém atualizado: Ele garante que você use a versão certa das bibliotecas.
+Carrega automaticamente: Você não precisa ficar escrevendo require para cada arquivo.
